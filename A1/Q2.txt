@@ -1,0 +1,20 @@
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+         int a = int.Parse(Console.ReadLine());
+        int b = int.Parse(Console.ReadLine());
+        int c = int.Parse(Console.ReadLine());
+        int d = int.Parse(Console.ReadLine());
+        int e = int.Parse(Console.ReadLine());
+    
+        int[] Arr = { a, b, c, d, e };
+        Array.Reverse(Arr);
+        foreach(int i in Arr) {
+            Console.Write(i + " ");
+            break;
+        }
+    }
+}

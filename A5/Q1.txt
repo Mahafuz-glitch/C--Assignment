@@ -1,0 +1,24 @@
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+       int[] intArray = new int[10] {1,2,3,4,5,6,7,8,9,10};
+        string[] strArray = new string[7] {"ma","ah","ha","af","fu","qu","zzZ"};
+        int[] CopyIntArray = new int[10];
+        intArray.CopyTo(CopyIntArray, 0);
+        //foreach(int i in CopyIntArray){
+        //    Console.Write(i + "\n");
+        //}
+        Array.Sort(intArray);
+        //foreach(int i in CopyIntArray){
+        //    Console.Write(i + "\n");
+        //}
+        Array.Reverse(intArray);
+        //foreach(int i in CopyIntArray){
+        //    Console.Write(i + "\n");
+        //}
+        Array.Clear(intArray,0,intArray.Length); 
+    }
+}

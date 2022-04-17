@@ -1,0 +1,20 @@
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine ("Give two numbers :");
+        int aa = int.Parse(Console.ReadLine());
+        int bb = int.Parse(Console.ReadLine());
+        swap(aa,bb);
+    }
+    static void swap(int a, int b){
+        int c = 0;
+        Console.WriteLine($"Numbers Original Position is {a},{b}");
+        c=a;
+        a=b;
+        b=c;
+        Console.WriteLine($"Numbers now {a},{b}");
+    }
+}

@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace Assignment2
+{
+    class Employee2
+    {
+        public int EmpId { get; set; }
+        public string EmpName { get; set; }
+        public Employee2(int eid, string ename)
+        {
+            this.EmpId = eid;
+            this.EmpName = ename;
+        }
+    }
+    internal class Program1
+    {
+        static void Main(string[] args)
+        {
+            //object initilizer or collection initilizer
+            //ArrayList e = new ArrayList();//non generic
+            LinkedList<Employee2> eg = new LinkedList<Employee2>();
+            Employee2 e1 = new Employee2(1, "rashmi");
+            Employee2 e2 = new Employee2(2, "Anushka");
+            Employee2 e3 = new Employee2(3, "Parth");
+            eg.AddLast(e1);
+            eg.AddLast(e2);
+            eg.AddLast(e3);
+            //e.Add(e1);
+            //e.Add(e2);
+            //e.Add(e3);
+            //foreach (Employee2 i in eg)
+            //{
+            //   Console.WriteLine(i.EmpId + " " + i.EmpName);
+            // }
+            string NameUrSearching = "rashmi";
+            foreach (Employee2 e in eg)
+            {
+                if (String.Equals(NameUrSearching, e.EmpName))
+                   {
+                    Console.WriteLine("Found");
+                }
+            }
+            //Console.ReadKey();
+        }
+    }
+}

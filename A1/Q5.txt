@@ -1,0 +1,31 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+    
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine ("Give r :");
+        int aa = int.Parse(Console.ReadLine());
+        Console.WriteLine("What do you want,\"area\" or \"circum\"?");
+        string sks = Console.ReadLine();
+        circle(aa,sks);
+    
+    }
+    static void circle(int r, string sks){
+        switch(sks)
+        {
+            case "area":
+                Console.WriteLine(3.14*Math.Pow(r, 2));
+                break;
+            case "circum":
+                Console.WriteLine(2*3.14*r);
+                break;
+            default:
+                Console.WriteLine("NULL");
+                break;
+        }
+    }
+}

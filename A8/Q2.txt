@@ -1,0 +1,118 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Reflection;
+
+namespace A8
+{
+    internal class CustomeAtrAndReflectionProgram
+    {   
+         static void Main(string[] args)
+            {
+                HDFCAccount H1 = new HDFCAccount("Pro1", "Project One", "Mahafuz", "10.1.2020", "10.1.2022");
+                Console.WriteLine(H1.getStartDate());
+                Console.WriteLine(H1.getEndDate());
+            Console.WriteLine("");
+            Console.WriteLine("");
+                ICICIAccount I1 = new ICICIAccount("Pro2", "Project Two", "Rahaman", "10.1.2021", "10.1.2023");
+                Console.WriteLine(I1.getProjectName());
+                Console.WriteLine(I1.getClientName());
+            Console.WriteLine("");
+            Console.WriteLine("");
+
+            Type T = Type.GetType("A8.HDFCAccount");
+            MethodInfo[] methods = T.GetMethods();
+            
+
+            foreach(MethodInfo method in methods)
+            {
+                Console.WriteLine(method.Name);
+            }
+            Console.WriteLine("");
+            Console.WriteLine("");
+
+            Type T1 = Type.GetType("A8.ICICIAccount");
+            PropertyInfo[] properties = T1.GetProperties();
+
+            foreach (PropertyInfo property in properties)
+            {
+                Console.WriteLine(property.Name);
+            }
+
+          }
+        
+    }
+
+    [AttributeUsage(AttributeTargets.All)] public class SoftwareAttribute : Attribute
+    {
+        private string title { get; set; }
+        private string description { get; set; }
+
+        public SoftwareAttribute(string title, string description)
+        {
+            this.title = title;
+            this.description = description;
+        }
+
+    }
+
+    public class HDFCAccount
+    {
+        private string ProjectName { get; set; }
+        private string Description { get; set; }
+        private string ClientName { get; set; }
+        private string StartedDate { get; set; }
+        private string EndDate { get; set; }
+
+        [SoftwareAttribute("Constructor","Use is Const")]public HDFCAccount(string ProName, string Desc, string clit, string StartD, string EndD)
+        {
+            this.ProjectName = ProName;
+            this.Description = Desc;
+            this.ClientName = clit;
+            this.StartedDate = StartD;
+            this.EndDate = EndD;
+
+        }
+        [SoftwareAttribute("Accessor", "Return Value of Satrt Date")] public string getStartDate()
+        {
+            return StartedDate;
+        }
+
+        [SoftwareAttribute("Accessor", "Return Value of End Date")] public string getEndDate()
+        {
+            return EndDate;
+        }
+    }
+
+    public class ICICIAccount
+    {
+        public string ProjectName { get; set; }
+        public string Description { get; set; }
+        public string ClientName { get; set; }
+        public string StartedDate { get; set; }
+        public string EndDate { get; set; }
+
+        [SoftwareAttribute("Constructor", "Use is Const")] public ICICIAccount(string ProName, string Desc, string clit, string StartD, string EndD)
+        {
+            this.ProjectName = ProName;
+            this.Description = Desc;
+            this.ClientName = clit;
+            this.StartedDate = StartD;
+            this.EndDate = EndD;
+
+        }
+        [SoftwareAttribute("Accessor", "Return Value of Project Name")]
+        public string getProjectName()
+        {
+            return ProjectName;
+        }
+
+        [SoftwareAttribute("Accessor", "Return Value of Client Name")]
+        public string getClientName()
+        {
+            return ClientName;
+        }
+    }
+}

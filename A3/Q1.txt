@@ -1,0 +1,123 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+   
+using System;
+
+class Employee 
+{
+     protected int EmpNo{ get; set; }
+     protected string EmpName{ get; set; }
+     protected double Salary{ get; set; }
+     protected double HRA{ get; set; }
+     protected double TA{ get; set; }
+     protected double DA{ get; set; }
+     protected double PF{ get; set; }
+     protected double TDS{ get; set; }
+     protected double NetSalary{ get; set; }
+     protected double GrossSalary{ get; set; }
+    
+    
+  public Employee(int EmpNum, string EmpNm, double Sal)
+  {
+      EmpNo = EmpNum;
+      EmpName = EmpNm;
+      Salary = Sal;
+      if (Salary <5000){
+          HRA = Salary*10/100;
+          TA = Salary*5/100;
+          DA = Salary*15/100;
+          GrossSalary = Salary+HRA+TA+DA;
+      }
+      else if(Salary < 10000){
+          HRA = Salary*15/100;
+          TA = Salary*10/100;
+          DA = Salary*20/100;
+          GrossSalary = Salary+HRA+TA+DA;
+      }
+      else if (Salary<15000){
+          HRA = Salary*20/100;
+          TA = Salary*15/100;
+          DA = Salary*25/100;
+          GrossSalary = Salary+HRA+TA+DA;
+      }
+      else if (Salary<20000){
+          HRA = Salary*25/100;
+          TA = Salary*20/100;
+          DA = Salary*30/100;
+          GrossSalary = Salary+HRA+TA+DA;
+      }
+      else {
+          HRA = Salary*30/100;
+          TA = Salary*25/100;
+          DA = Salary*35/100;
+          GrossSalary = Salary+HRA+TA+DA;
+      }
+      
+  }
+  public virtual void CalculateSalary(){
+      PF = GrossSalary*10/100;
+      TDS = GrossSalary*18/100;
+      NetSalary = GrossSalary-(PF + TDS);
+  }
+  
+  public virtual void Gsal(){
+      
+       
+       Console.WriteLine(GrossSalary);
+  }
+  
+}
+
+class Manager: Employee {
+    
+    private double PetrolAllowance{ get; set; }
+    private double FoodAllowance{ get; set; }
+    private double OtherAllowances{ get; set; }
+ public Manager(int EmpNum, string EmpNm, double Sal):base(EmpNum, EmpNm,Sal){
+    PetrolAllowance = Salary*8/100;
+    FoodAllowance = Salary*13/100;
+    OtherAllowances = Salary*3/100;
+}
+  public override void Gsal(){
+      GrossSalary = (GrossSalary + PetrolAllowance + FoodAllowance+OtherAllowances);
+     Console.WriteLine(GrossSalary);
+  }
+  
+  public override void CalculateSalary(){
+      NetSalary = GrossSalary-(PF + TDS);
+  }
+}
+  
+  class MarketingExecutive : Employee
+  {
+      private double Kilometertravel{ get; set; }
+      private double TourAllowances{ get; set; }
+      private double TelephoneAllowances{ get; set; }
+ 
+  public MarketingExecutive(int EmpNum, string EmpNm, double Sal,double klt):base(EmpNum, EmpNm, Sal){
+     Kilometertravel = klt;
+     TourAllowances = Kilometertravel*5;
+     TelephoneAllowances = 1000;
+ }
+  public override void Gsal(){
+      GrossSalary = (GrossSalary + TourAllowances+TelephoneAllowances);
+      Console.WriteLine(GrossSalary);
+  }
+  public override void CalculateSalary(){
+      NetSalary = GrossSalary-(PF + TDS);
+  }
+  
+ }    
+    
+class MainProgram 
+{
+  static void Main(string[] args) 
+  {
+    //Employee Emp1 = new Employee(1,"Mahafuz",21000);
+    //Manager M1 = new Manager(2,"Rahaman",7000);
+    //MarketingExecutive MarkE1 = new MarketingExecutive(3,"Sardar",7000,10);
+    //Emp1.Gsal();
+    //M1.Gsal();
+   // MarkE1.Gsal();
+  }
+}

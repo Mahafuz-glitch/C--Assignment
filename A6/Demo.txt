@@ -1,0 +1,53 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+    
+using System;
+using System. Threading;
+
+
+public class Video
+{
+    public string Title { get; set; }
+}
+
+
+public class VideoEncoder
+{
+    public delegate void VideoEncodedEventHendler(object source, EventArgs args);
+    
+    public event VideoEncodedEventHendler VideoEncoded;
+    
+    public void Encode(Video video)
+    {
+    Console.WriteLine("Encoding Video...");
+    Thread.Sleep(3000);
+    OnVideoEncoded();
+    }
+    protected virtual void  OnVideoEncoded(){
+        if (VideoEncoded != null){
+            VideoEncoded(this, EventArgs.Empty);
+        }
+    }
+}
+
+public class MailService
+{
+public void OnVideoEncoded(object source, EventArgs e)
+    {
+    Console.WriteLine("MailService: Sending an email...");
+    }
+}
+
+class Program
+    {
+    static void Main(string[] args)
+    {
+    var video = new Video() { Title = "Video 1" };
+    var videoEncoder = new VideoEncoder();
+    var mailService = new MailService();
+    
+    videoEncoder.VideoEncoded += mailService.OnVideoEncoded;
+    videoEncoder.Encode(video);
+    }
+}
+

@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+
+namespace A8 // Note: actual namespace depends on the project name.
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Console.WriteLine("Hello World!");
+            Calculator.Addition(new List<int>() { 10,20,30,40 });
+        }
+    }
+
+    public class Calculator
+    {
+        [Obsolete("Use Addition(List<int> Num) Method")]    //Using Atribute to say Use the updated Method
+        public static int Addition (int a, int b)
+        {
+            return a + b;
+        }
+
+        public static int Addition(List<int> Num)
+        {
+            int temp = 0;
+            foreach(int i in Num)
+            {
+                temp = temp+ i;
+            }
+            Console.WriteLine(temp);
+            return temp;
+        }
+    }
+}

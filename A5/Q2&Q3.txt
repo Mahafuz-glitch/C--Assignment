@@ -1,0 +1,37 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+class Employee1
+    {
+        public int EmpId { get; set; }
+        public string EmpName { get; set; }
+        public Employee1(int eid, string ename)
+        {
+            this.EmpId = eid;
+            this.EmpName = ename;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //object initilizer or collection initilizer
+            //ArrayList e = new ArrayList();//non generic
+            LinkedList<Employee1> eg = new LinkedList<Employee1>();
+            Employee1 e1 = new Employee1(1, "rashmi");
+            Employee1 e2 = new Employee1(2, "Anushka");
+            Employee1 e3 = new Employee1(3, "Parth");
+            eg.AddLast(e1);
+            eg.AddLast(e2);
+            eg.AddLast(e3);
+            //e.Add(e1);
+            //e.Add(e2);
+            //e.Add(e3);
+            foreach (Employee1 i in eg)
+            {
+                Console.WriteLine(i.EmpId + " " + i.EmpName);
+            }
+            Console.ReadKey();
+        }
+    }

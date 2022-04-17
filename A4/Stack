@@ -1,0 +1,108 @@
+using System;
+
+namespace StackImplementation
+{
+	internal class Stack
+	{
+		static readonly int MAX = 2;
+		int top;
+		int[] stack = new int[MAX];
+
+		bool IsEmpty()
+		{
+			return (top < 0);
+		}
+		public Stack()
+		{
+			top = -1;
+		}
+		internal bool Push(int data)
+		{
+			if (top >= MAX-1)
+			{
+				throw new ExcpByMahafuz("Stack is Overflowing");
+				return false;
+			}
+			else
+			{		
+				stack[++top] = data;
+				//Console.WriteLine("Value of top {0}",top);
+				return true;
+			}
+		}
+
+		internal int Pop()
+		{
+			if (top < 0)
+			{
+				throw new ExcpByMahafuz("Stack is Underflowing");
+				return 0;
+			}
+			else
+			{
+				int value = stack[top--];
+				return value;
+			}
+		}
+
+		internal void Peek()
+		{
+			if (top < 0)
+			{
+				throw new ExcpByMahafuz("Stack is Underflowing");
+			}
+			else
+				Console.WriteLine("The topmost element of Stack is : {0}", stack[top]);
+		}
+
+		internal void PrintStack()
+		{
+			if (top < 0)
+			{
+				throw new ExcpByMahafuz("Stack is Underflowing");
+			}
+			else
+			{
+				Console.WriteLine("Items in the Stack are :");
+				for (int i = top; i >= 0; i--)
+				{
+					Console.WriteLine(stack[i]);
+				}
+			}
+		}
+	}
+	public class ExcpByMahafuz : System.ApplicationException
+	{
+		public ExcpByMahafuz(string message) : base(message)
+		{
+		}
+	}
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			Stack myStack = new Stack();
+			try
+			{
+				myStack.Push(10);
+				myStack.Push(20);
+				myStack.Push(30);
+				//myStack.Pop();
+				//myStack.Pop();
+				//myStack.Pop();
+				myStack.PrintStack();
+			}
+			catch (ExcpByMahafuz e)
+			{
+				Console.WriteLine("My exception Message: {0}", e.Message);
+			}
+			//myStack.Push(40);
+			//myStack.PrintStack();
+			//myStack.Peek();
+			//myStack.PrintStack();
+			//Console.WriteLine("Item popped from Stack : {0}", myStack.Pop());
+			//myStack.PrintStack();
+		}
+	}
+}
+

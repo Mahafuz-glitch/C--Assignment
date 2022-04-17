@@ -1,0 +1,63 @@
+// Online C# Editor for free 
+
+// Write, Edit and Run your C# code using C# Online Compiler 
+
+     
+
+using System; 
+
+ 
+
+public class HelloWorld 
+
+{ 
+
+    public static void Main(string[] args) 
+
+    { 
+
+         int a = Int32.Parse(Console.ReadLine()); 
+
+        int b = Int32.Parse(Console.ReadLine()); 
+
+        string cmd  = Console.ReadLine(); 
+
+        switch(cmd)  
+
+    { 
+
+        case "sum": 
+
+            Console.WriteLine(a+b); 
+
+            break; 
+
+        case "minus": 
+
+            Console.WriteLine(a-b); 
+
+            break; 
+
+        case "multiple": 
+
+            Console.WriteLine(a*b); 
+
+            break; 
+
+        case "divd": 
+
+            Console.WriteLine(a/b); 
+
+            break; 
+
+        default : 
+
+            Console.WriteLine("NO cmd"); 
+
+            break; 
+
+    } 
+
+    } 
+
+} 
